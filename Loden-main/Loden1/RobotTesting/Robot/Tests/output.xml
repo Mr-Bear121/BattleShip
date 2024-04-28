@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.9.5 on win32)" generated="20220719 13:26:15.708" rpa="false" schemaversion="3">
+<suite id="s1" name="TestCreate" source="C:\Users\Kuma_senpai\Desktop\ProjectDump\NetBeans\AWS Client\src\RobotTesting\Robot\Tests\TestCreate.robot">
+<test id="s1-t1" name="Test SQl Create" line="24">
+<kw name="Test Create">
+<arg>${jar_Path}</arg>
+<arg>${cTest_Case}</arg>
+<arg>${Socket_Address}</arg>
+<doc>Tests "MessageOperations.java"`s "Create" statement.</doc>
+<kw name="Log" library="BuiltIn">
+<arg>File:${Jar}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220719 13:26:15.739" level="INFO">File:../../../../dist/AWS_Client.jar</msg>
+<status status="PASS" starttime="20220719 13:26:15.739" endtime="20220719 13:26:15.739"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Program:${Test}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220719 13:26:15.739" level="INFO">Program:RobotTesting.JavBot.TestClient</msg>
+<status status="PASS" starttime="20220719 13:26:15.739" endtime="20220719 13:26:15.739"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Address:${Address}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220719 13:26:15.739" level="INFO">Address:https://nqppg18xe6.execute-api.us-east-2.amazonaws.com/Alpha/rampresource</msg>
+<status status="PASS" starttime="20220719 13:26:15.739" endtime="20220719 13:26:15.739"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Full path:${Jar} ${Test}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220719 13:26:15.739" level="INFO">Full path:../../../../dist/AWS_Client.jar RobotTesting.JavBot.TestClient</msg>
+<status status="PASS" starttime="20220719 13:26:15.739" endtime="20220719 13:26:15.739"/>
+</kw>
+<kw name="Run Process" library="Process">
+<arg>Java</arg>
+<arg>-classpath</arg>
+<arg>${Jar}</arg>
+<arg>${Test}</arg>
+<arg>create</arg>
+<arg>alias=Connect</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20220719 13:26:15.739" level="INFO">Starting process:
+Java -classpath ../../../../dist/AWS_Client.jar RobotTesting.JavBot.TestClient create</msg>
+<msg timestamp="20220719 13:26:15.739" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20220719 13:26:16.325" level="INFO">Process completed.</msg>
+<status status="PASS" starttime="20220719 13:26:15.739" endtime="20220719 13:26:16.325"/>
+</kw>
+<kw name="Get Process Result" library="Process">
+<var>${Result}</var>
+<arg>Connect</arg>
+<doc>Returns the specified `result object` or some of its attributes.</doc>
+<msg timestamp="20220719 13:26:16.325" level="INFO">${Result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20220719 13:26:16.325" endtime="20220719 13:26:16.325"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>NetWork Code:${Result.stdout}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220719 13:26:16.325" endtime="20220719 13:26:16.325"/>
+</kw>
+<return>
+<value>${Result}</value>
+<status status="PASS" starttime="20220719 13:26:16.325" endtime="20220719 13:26:16.325"/>
+</return>
+<status status="PASS" starttime="20220719 13:26:15.739" endtime="20220719 13:26:16.325"/>
+</kw>
+<status status="PASS" starttime="20220719 13:26:15.739" endtime="20220719 13:26:16.325"/>
+</test>
+<doc>this robot file is working in  tandem with "MessageOperations.java" to test this application.</doc>
+<status status="PASS" starttime="20220719 13:26:15.708" endtime="20220719 13:26:16.325"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="TestCreate">TestCreate</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.9.5 on win32)" generated="20220801 09:58:30.342" rpa="false" schemaversion="3">
+<suite id="s1" name="NetWorkTesting" source="C:\Users\Kuma_senpai\Desktop\ProjectDump\NetBeans\AWS Client\src\RobotTesting\Robot\NetWorkTesting.robot">
+<test id="s1-t1" name="Get User Input" line="75">
+<kw name="Select Test Dialog">
+<var>${Selection}</var>
+<doc>Determines what action the user wishes to take via dialog box</doc>
+<kw name="Get Selection From User" library="Dialogs">
+<var>${selection}</var>
+<arg>Network Testing</arg>
+<arg>@{options}</arg>
+<doc>Pauses execution and asks user to select a value.</doc>
+<msg timestamp="20220801 09:58:33.141" level="INFO">${selection} = ReadTest</msg>
+<status status="PASS" starttime="20220801 09:58:30.393" endtime="20220801 09:58:33.142"/>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>${selection}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<msg timestamp="20220801 09:58:33.142" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20220801 09:58:33.142" endtime="20220801 09:58:33.142"/>
+</kw>
+<msg timestamp="20220801 09:58:33.143" level="INFO">${Selection} = ReadTest</msg>
+<status status="PASS" starttime="20220801 09:58:30.393" endtime="20220801 09:58:33.143"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Value of ${Selection}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220801 09:58:33.144" level="INFO">Value of ReadTest</msg>
+<status status="PASS" starttime="20220801 09:58:33.143" endtime="20220801 09:58:33.144"/>
+</kw>
+<kw name="Run Selected Operation">
+<arg>${selection}</arg>
+<doc>Select a Test based on selected dialog option</doc>
+<kw name="Convert To Lower Case" library="String">
+<var>${Option}</var>
+<arg>${Option}</arg>
+<doc>Converts string to lower case.</doc>
+<msg timestamp="20220801 09:58:33.147" level="INFO">${Option} = readtest</msg>
+<status status="PASS" starttime="20220801 09:58:33.146" endtime="20220801 09:58:33.147"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${Condition}</var>
+<arg>200</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220801 09:58:33.147" level="INFO">${Condition} = 200</msg>
+<status status="PASS" starttime="20220801 09:58:33.147" endtime="20220801 09:58:33.147"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>TestCase:${Option}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220801 09:58:33.147" endtime="20220801 09:58:33.147"/>
+</kw>
+<if>
+<branch type="IF" condition="'${Option}' == 'connectiontest'">
+<kw name="Test Connection" library="ClientConnectionTest">
+<var>${Result}</var>
+<arg>${Jar_Path}</arg>
+<arg>${Test_Case}</arg>
+<arg>${Socket_Address}</arg>
+<doc>Attempt to get a response code from "getResponseCode" after running " HttpURLConnection"</doc>
+<status status="NOT RUN" starttime="20220801 09:58:33.147" endtime="20220801 09:58:33.148"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${Result.stdout}</arg>
+<arg>200</arg>
+<arg>Connection was not established correctly</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20220801 09:58:33.148" endtime="20220801 09:58:33.148"/>
+</kw>
+<status status="NOT RUN" starttime="20220801 09:58:33.147" endtime="20220801 09:58:33.148"/>
+</branch>
+<branch type="ELSE IF" condition="'${Option}' == 'createtest'">
+<kw name="Test CRUDS" library="TestCRUDS">
+<var>${Result}</var>
+<arg>${Jar_Path}</arg>
+<arg>${cTest_Case}</arg>
+<arg>create</arg>
+<doc>Tests "MessageOperations.java"`s "Create" statement.</doc>
+<status status="NOT RUN" starttime="20220801 09:58:33.148" endtime="20220801 09:58:33.148"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${Result.stdout}</arg>
+<arg>${Condition}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="NOT RUN" starttime="20220801 09:58:33.148" endtime="20220801 09:58:33.148"/>
+</kw>
+<status status="NOT RUN" starttime="20220801 09:58:33.148" endtime="20220801 09:58:33.148"/>
+</branch>
+<branch type="ELSE IF" condition="'${Option}' == 'readtest'">
+<kw name="Test CRUDS" library="TestCRUDS">
+<var>${Result}</var>
+<arg>${Jar_Path}</arg>
+<arg>${cTest_Case}</arg>
+<arg>read</arg>
+<doc>Tests "MessageOperations.java"`s "Create" statement.</doc>
+<kw name="Log" library="BuiltIn">
+<arg>File:${Jar}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220801 09:58:33.152" level="INFO">File:../../../dist/AWS_Client.jar</msg>
+<status status="PASS" starttime="20220801 09:58:33.152" endtime="20220801 09:58:33.152"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Program:${Test}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220801 09:58:33.152" level="INFO">Program:RobotTesting.JavBot.TestClient</msg>
+<status status="PASS" starttime="20220801 09:58:33.152" endtime="20220801 09:58:33.152"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Full path:${Jar} ${Test}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220801 09:58:33.153" level="INFO">Full path:../../../dist/AWS_Client.jar RobotTesting.JavBot.TestClient</msg>
+<status status="PASS" starttime="20220801 09:58:33.153" endtime="20220801 09:58:33.153"/>
+</kw>
+<kw name="Run Process" library="Process">
+<arg>Java</arg>
+<arg>-classpath</arg>
+<arg>${Jar}</arg>
+<arg>${Test}</arg>
+<arg>${CRUDS_OP}</arg>
+<arg>alias=Connect</arg>
+<doc>Runs a process and waits for it to complete.</doc>
+<msg timestamp="20220801 09:58:33.153" level="INFO">Starting process:
+Java -classpath ../../../dist/AWS_Client.jar RobotTesting.JavBot.TestClient read</msg>
+<msg timestamp="20220801 09:58:33.156" level="INFO">Waiting for process to complete.</msg>
+<msg timestamp="20220801 09:58:33.790" level="INFO">Process completed.</msg>
+<status status="PASS" starttime="20220801 09:58:33.153" endtime="20220801 09:58:33.790"/>
+</kw>
+<kw name="Get Process Result" library="Process">
+<var>${Result}</var>
+<arg>Connect</arg>
+<doc>Returns the specified `result object` or some of its attributes.</doc>
+<msg timestamp="20220801 09:58:33.791" level="INFO">${Result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20220801 09:58:33.790" endtime="20220801 09:58:33.791"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>NetWork Code:${Result.stdout}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220801 09:58:33.792" level="INFO">NetWork Code:java.lang.NullPointerException: Cannot invoke "String.split(String)" because "message" is null
+Code not found</msg>
+<status status="PASS" starttime="20220801 09:58:33.791" endtime="20220801 09:58:33.792"/>
+</kw>
+<return>
+<value>${Result}</value>
+<status status="PASS" starttime="20220801 09:58:33.792" endtime="20220801 09:58:33.792"/>
+</return>
+<msg timestamp="20220801 09:58:33.792" level="INFO">${Result} = &lt;result object with rc 0&gt;</msg>
+<status status="PASS" starttime="20220801 09:58:33.148" endtime="20220801 09:58:33.792"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${Result.stdout}</arg>
+<arg>200</arg>
+<arg>Connection was not established correctly</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<msg timestamp="20220801 09:58:33.793" level="FAIL">'java.lang.NullPointerException: Cannot invoke "String.split(String)" because "message" is null
+Code not found' cannot be converted to an integer: ValueError: invalid literal for int() with base 10: 'java.lang.nullpointerexception:cannotinvoke"string.split(string)"because"message"isnullcodenotfound'</msg>
+<status status="FAIL" starttime="20220801 09:58:33.792" endtime="20220801 09:58:33.810"/>
+</kw>
+<status status="FAIL" starttime="20220801 09:58:33.148" endtime="20220801 09:58:33.810"/>
+</branch>
+<branch type="ELSE IF" condition="'${Option}' == 'updatetest'">
+<kw name="Test CRUDS" library="TestCRUDS">
+<var>${Result}</var>
+<arg>${Jar_Path}</arg>
+<arg>${cTest_Case}</arg>
+<arg>update</arg>
+<doc>Tests "MessageOperations.java"`s "Create" statement.</doc>
+<status status="NOT RUN" starttime="20220801 09:58:33.810" endtime="20220801 09:58:33.810"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${Result.stdout}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20220801 09:58:33.810" endtime="20220801 09:58:33.810"/>
+</kw>
+<status status="NOT RUN" starttime="20220801 09:58:33.810" endtime="20220801 09:58:33.810"/>
+</branch>
+<branch type="ELSE IF" condition="'${Option}' == 'deletetest'">
+<kw name="Test CRUDS" library="TestCRUDS">
+<var>${Result}</var>
+<arg>${Jar_Path}</arg>
+<arg>${cTest_Case}</arg>
+<arg>delete</arg>
+<doc>Tests "MessageOperations.java"`s "Create" statement.</doc>
+<status status="NOT RUN" starttime="20220801 09:58:33.810" endtime="20220801 09:58:33.810"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${Result.stdout}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20220801 09:58:33.810" endtime="20220801 09:58:33.810"/>
+</kw>
+<kw name="Else If" library="Reserved">
+<arg>'${Option}' == 'searchtest'</arg>
+<status status="NOT RUN" starttime="20220801 09:58:33.810" endtime="20220801 09:58:33.810"/>
+</kw>
+<kw name="Test CRUDS" library="TestCRUDS">
+<var>${Result}</var>
+<arg>${Jar_Path}</arg>
+<arg>${cTest_Case}</arg>
+<arg>search</arg>
+<doc>Tests "MessageOperations.java"`s "Create" statement.</doc>
+<status status="NOT RUN" starttime="20220801 09:58:33.810" endtime="20220801 09:58:33.810"/>
+</kw>
+<kw name="Should Be Equal As Integers" library="BuiltIn">
+<arg>${Result.stdout}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="NOT RUN" starttime="20220801 09:58:33.810" endtime="20220801 09:58:33.810"/>
+</kw>
+<status status="NOT RUN" starttime="20220801 09:58:33.810" endtime="20220801 09:58:33.810"/>
+</branch>
+<status status="FAIL" starttime="20220801 09:58:33.147" endtime="20220801 09:58:33.810"/>
+</if>
+<status status="FAIL" starttime="20220801 09:58:33.146" endtime="20220801 09:58:33.811"/>
+</kw>
+<doc>Gather Input From user</doc>
+<status status="FAIL" starttime="20220801 09:58:30.392" endtime="20220801 09:58:33.812">'java.lang.NullPointerException: Cannot invoke "String.split(String)" because "message" is null
+Code not found' cannot be converted to an integer: ValueError: invalid literal for int() with base 10: 'java.lang.nullpointerexception:cannotinvoke"string.split(string)"because"message"isnullcodenotfound'</status>
+</test>
+<doc>this robot file is working in  tandem with "TestClient.java" to test this application.</doc>
+<status status="FAIL" starttime="20220801 09:58:30.343" endtime="20220801 09:58:33.814"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="NetWorkTesting">NetWorkTesting</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
